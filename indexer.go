@@ -24,9 +24,11 @@ func handle_line(lineChan chan string) {
 			f, err := os.OpenFile(fmt.Sprintf("%v/list", dst_dir), os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 			if err != nil {
 				log.Println(err)
+				return
 			}
 			if _, err := f.WriteString(fmt.Sprintf("%s\n", dst)); err != nil {
 				log.Println(err)
+				return
 			}
 			f.Close()
 		}
